@@ -15,5 +15,5 @@ console.log(precio)
 
 //Convetir entero a string
 console.log(precio.toString());
-;
+
 
