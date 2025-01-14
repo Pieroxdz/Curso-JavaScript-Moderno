@@ -1,4 +1,4 @@
-"use strict"
+"use strict" //Para obligarnos a escribir de manera correcta js
 
 const producto = {
     nombre: "Monitor de 20\"",
