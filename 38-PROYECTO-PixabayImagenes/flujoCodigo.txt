@@ -1,0 +1,45 @@
+window.onload
+  └─> formulario.submit
+        └─> validarFormulario(e)
+              ├─> término vacío? ──┐
+              │                    │
+              │                    ↓
+              │           mostrarAlerta(mensaje)
+              │                    │
+              │               [Alerta visible 3s]
+              │                    ↓
+              │                 (fin)
+              │
+              └─> buscarImagenes()
+                    │
+                    ├─> Construir URL API con término y páginaActual
+                    │
+                    ├─> fetch(URL)
+                    │     ├─> .then(respuesta.json())
+                    │     │       ├─> calcularPaginas(datos.totalHits)
+                    │     │       │        ↓
+                    │     │       │   totalPaginas = ceil(totalHits / registroPorPagina)
+                    │     │       │
+                    │     │       └─> mostrarImagenes(datos.hits)
+                    │     │                │
+                    │     │                ├─> limpiarHTML(resultado)  
+                    │     │                │    (limpia las IMÁGENES viejas antes de mostrar las nuevas)
+                    │     │                │
+                    │     │                ├─> Iterar imágenes y añadir HTML a resultado
+                    │     │                │
+                    │     │                ├─> limpiarHTML(paginacionDiv)
+                    │     │                │    (limpia los BOTONES de paginación viejos antes de crear nuevos)
+                    │     │                │
+                    │     │                └─> imprimirPaginador()
+                    │     │                         │
+                    │     │                         ├─> iterador = crearPaginador(totalPaginas)
+                    │     │                         ├─> Mientras no done:
+                    │     │                         │       ├─> Crear botón con número de página
+                    │     │                         │       ├─> Al hacer click:
+                    │     │                         │       │      ├─> paginaActual = número botón
+                    │     │                         │       │      └─> buscarImagenes()
+                    │     │                         │       └─> Añadir botón a paginacionDiv
+                    │     │                         └─> Fin iteración
+                    │     └─> .catch(error) → console.log(error)
+                    │
+                    └─> Fin buscarImagenes()
